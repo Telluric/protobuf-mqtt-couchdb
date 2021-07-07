@@ -1,0 +1,27 @@
+{
+  "name": "@telluric/protobuf-mqtt-couchdb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mqtt": "^4.2.8",
+    "pouchdb": "^7.2.2",
+    "protobufjs": "^6.11.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Telluric/protobuf-mqtt-couchdb.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Telluric/protobuf-mqtt-couchdb/issues"
+  },
+  "homepage": "https://github.com/Telluric/protobuf-mqtt-couchdb#readme"
+}

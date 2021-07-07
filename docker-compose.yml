@@ -1,0 +1,15 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  worker:
+    build: .
+    environment:
+      - COUCHDB_DATABASE=http://couchdb:5984/messages
+      - MQTT_BROKER=mqtt://mqtt
+      - MQTT_FEED=/feed/messages
+    links:
+      - mqtt
+      - couchdb
+  mqtt:
+    image: eclipse-mosquitto
+  couchdb:
+    image: couchdb
