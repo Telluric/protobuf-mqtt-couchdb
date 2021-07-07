@@ -7,7 +7,7 @@ const client  = mqtt.connect(process.env.MQTT_BROKER)
 const feed = process.env.MQTT_FEED;
 
 client.on('connect', () => {
-    client.subscribe(feed).catch(err=>throw err)
+    client.subscribe(feed)
 })
 
 // Load PB and Sync Mutated Messages to Couchdb
@@ -16,12 +16,7 @@ pmc({
     type: process.env.PROTOBUF_TYPE,
     db: new PouchDB(process.env.COUCHDB_DATABASE),
     client: client,
-    mutation: (d) => {
-        let timestamp = Date.now()
-        d.tsdiff = timestamp - d.timestamp
-        d.timestamp = timestamp
-        return {...d, _id:`${timestamp}`}
-    }
+    mutation: process.env.PMC_MUTATION_FILE ? require(process.env.PMC_MUTATION_FILE) : (d)=>d
 }, (res)=>{
     console.log(res);
 })
